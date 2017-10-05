@@ -17,151 +17,111 @@ namespace LightShowRaspberry
         public Form1()
         {
             InitializeComponent();
-
-            ftpClient = new SftpClient(RaspberryIp, loginName, loginPassword);
-            sshClient = new SshClient(RaspberryIp, loginName, loginPassword);
+            connection = new SshConnection(RaspberryIp, loginName, loginPassword);
         }
 
-        string RaspberryIp = "192.168.0.105";
+        string RaspberryIp = "192.168.0.104";
 
-        string workingDirectory = "/home/pi/Music/";
         string loginName = "pi";
         string loginPassword = "raspberry";
+        SshConnection connection;
 
-        SftpClient ftpClient;
-        SshClient sshClient;
 
-        private void GetMusicVolume()
+        private void UpdateList()
         {
-            if (TryConnect(sshClient))
+            listBox1.Items.Clear();
+            var songList = connection.GetSongList();
+            foreach (var song in songList)
             {
-                var response = sshClient.RunCommand("awk -F\"[][]\" '/dB/ { print $2 }' <(amixer sget PCM)");
-                string result = response.Result;
-                result = result.Remove(result.Length - 2);
-
-                int value = Convert.ToInt32(result);
-                trackBar1.Value = value;
-
-                sshClient.Disconnect();
+                listBox1.Items.Add(song);
             }
         }
-
-
-        private void GetMusic()
-        {
-            if (TryConnect(ftpClient))
-            {
-                var fileList = ftpClient.ListDirectory(ftpClient.WorkingDirectory).Where(x => x.Name != ".." && x.Name != ".").Select(s => s.Name);
-
-                listBox1.Items.Clear();
-                foreach (var item in fileList)
-                {
-                    listBox1.Items.Add(item);
-                }
-                label1.Text = "Connection succesful.";
-                ftpClient.Disconnect();
-            }
-            else
-                MessageBox.Show("Cannot connect");
-        }
-
-        private bool TryConnect(SftpClient ftpClient)
-        {
-            try
-            {
-                ftpClient.Connect();
-                ftpClient.ChangeDirectory(workingDirectory);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private bool TryConnect(SshClient sshClient)
-        {
-            try
-            {
-                sshClient.Connect();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            GetMusic();
-            GetMusicVolume();
+            connection.Connect(); //předělat na async
+            if (connection.IsConnected)
+            {
+                UpdateList();
+                trackBar1.Value = connection.GetVolume();
+            }
+            else
+                MessageBox.Show("Connection could not be estabilished");
         }
 
 
         private void button3_Click(object sender, EventArgs e)
         {
-            string uploadFile = "";
-            string uploadFileName = "";
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (connection.IsConnected)
             {
-                uploadFile = openFileDialog1.FileName;
-                uploadFileName = Path.GetFileName(uploadFile);
-            }
-            else
-                return;
-
-            if (TryConnect(ftpClient))
-            {
-                if (!ftpClient.Exists(uploadFileName))
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
-                    using (var fileStream = new FileStream(uploadFile, FileMode.Open))
-                    {
-                        ftpClient.BufferSize = 4 * 1024; // bypass Payload error large files
-                        ftpClient.UploadFile(fileStream, uploadFileName);
-                    }
+                    string[] files = openFileDialog1.FileNames;
+                    connection.Upload(files);
 
-                    listBox1.Items.Add(uploadFileName);
+                    foreach (var file in files)
+                    {
+                        listBox1.Items.Add(Path.GetFileName(file));
+                    }
                 }
                 else
-                    MessageBox.Show("Song is already there");
-
-                ftpClient.Disconnect();
+                    return;
             }
+            else
+                MessageBox.Show("Connection could not be estabilished");
+
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            if (TryConnect(ftpClient))
+            if(connection.IsConnected)
             {
-                string listboxSong = listBox1.SelectedItem.ToString();
-                ftpClient.DeleteFile(listboxSong);
-                listBox1.Items.Remove(listboxSong);
-                ftpClient.Disconnect();
+                var items = listBox1.SelectedItems;
+                string[] files = items.OfType<string>().ToArray();
+                connection.Delete(files);
+
+                for (int i = 0; i < items.Count; i++) //Musím for cyklus.  Foreach je v listbox kolekci zakázanej
+                {
+                    listBox1.Items.Remove(items[i]);
+                }
+
             }
+            else
+                MessageBox.Show("Connection could not be estabilished");
+
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex >= 0)
             {
-                if (TryConnect(sshClient))
+                if (connection.IsConnected)
                 {
+                    connection.Play(listBox1.SelectedItem.ToString(), trackBar1.Value);
+                 }
+                else
+                    MessageBox.Show("Connection could not be estabilished");
+            }
+            MessageBox.Show("Song is not selected");
 
-                    ShellStream shellStream = sshClient.CreateShellStream("Tail", 80, 24, 800, 600, 1024);
-                    shellStream.WriteLine("sudo amixer set PCM " + trackBar1.Value + "%");
-                    shellStream.WriteLine("sudo python /home/pi/lightshow/py/synchronized_lights.py --file=/home/pi/Music/\"" + listBox1.SelectedItem.ToString() + "\"");
-                    MessageBox.Show("Song is playing. To stop, close this dialog");
-                    shellStream.Write("\x003");
-                    shellStream.Close();
-                    // var terminal = sshClient.RunCommand("sudo python /home/pi/lightshow/py/synchronized_lights.py --file=/home/pi/Music/" + listBox1.SelectedItem.ToString());
-                    // MessageBox.Show(terminal.Result);
+        }
 
-                    sshClient.Disconnect();
-                }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if(connection.IsConnected)
+            {
+                connection.Exit();
             }
             else
-                MessageBox.Show("Song isnt selected");
+                MessageBox.Show("Connection could not be estabilished");
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (connection.IsConnected)
+                connection.Stop();
         }
     }
 }
