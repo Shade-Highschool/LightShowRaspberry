@@ -18,6 +18,8 @@ namespace LightShowRaspberry
         {
             InitializeComponent();
             connection = new SshConnection(RaspberryIp, loginName, loginPassword);
+           // connection.LightShowFolder = "/home/pi/lightshow/";
+           // connection.MusicFolder = "/home/pi/Music/";
         }
 
         string RaspberryIp = "192.168.0.104";
@@ -60,7 +62,9 @@ namespace LightShowRaspberry
 
                     foreach (var file in files)
                     {
-                        listBox1.Items.Add(Path.GetFileName(file));
+                        string fileName = Path.GetFileName(file);
+                        if(!listBox1.Items.Contains(fileName))
+                            listBox1.Items.Add(fileName);
                     }
                 }
                 else
@@ -103,7 +107,8 @@ namespace LightShowRaspberry
                 else
                     MessageBox.Show("Connection could not be estabilished");
             }
-            MessageBox.Show("Song is not selected");
+            else
+                MessageBox.Show("Song is not selected");
 
         }
 
@@ -112,6 +117,7 @@ namespace LightShowRaspberry
             if(connection.IsConnected)
             {
                 connection.Exit();
+                listBox1.Items.Clear();
             }
             else
                 MessageBox.Show("Connection could not be estabilished");

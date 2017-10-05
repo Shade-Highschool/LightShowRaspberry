@@ -17,6 +17,9 @@ namespace LightShowRaspberry
         SshClient sshClient;
         ShellStream shellStream;
 
+        public string MusicFolder { get; set; } = "/home/pi/Music/";
+        public string LightShowFolder { get; set; } = "/home/pi/lightshow/";
+
         public SshConnection(string host, string username, string password)
         {
             ftpClient = new SftpClient(host, username, password);
@@ -30,7 +33,7 @@ namespace LightShowRaspberry
                 ftpClient.Connect();
                 sshClient.Connect();
 
-                ftpClient.ChangeDirectory("/home/pi/Music");
+                ftpClient.ChangeDirectory(MusicFolder);
                 IsConnected = true;
                 return true;
             }
@@ -83,7 +86,7 @@ namespace LightShowRaspberry
             {
                 shellStream = sshClient.CreateShellStream("LightShow", 80, 24, 800, 600, 1024);
                 shellStream.WriteLine("sudo amixer set PCM " + volume + "%");
-                shellStream.WriteLine("sudo python /home/pi/lightshow/py/synchronized_lights.py --file=/home/pi/Music/\"" + file + "\"");
+                shellStream.WriteLine("sudo python " + LightShowFolder + "/py/synchronized_lights.py --file=" + MusicFolder + "\"" + file + "\"");
                 return true;
             }
             catch
@@ -98,7 +101,7 @@ namespace LightShowRaspberry
             try
             {
                 shellStream.WriteLine("\x03");
-                Thread.Sleep(200);
+                Thread.Sleep(200); //Pauza aby se stihlo poslat ctrl+c
                 shellStream.Close();
             }
             catch { }
