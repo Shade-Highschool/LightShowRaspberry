@@ -30,7 +30,6 @@ namespace LightShowRaspberry
         {
             await Task.Run(() => Connect());
         }
-
         public void Connect()
         {
             try

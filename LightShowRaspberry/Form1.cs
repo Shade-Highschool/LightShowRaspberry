@@ -38,9 +38,10 @@ namespace LightShowRaspberry
                 listBox1.Items.Add(song);
             }
         }
-        private void btnConnect_Click(object sender, EventArgs e)
+        private async void btnConnect_Click(object sender, EventArgs e)
         {
-            connection.Connect(); //předělat na async
+            await connection.ConnectAsync();
+           // connection.Connect();
             if (connection.IsConnected)
             {
                 UpdateList();
@@ -51,15 +52,15 @@ namespace LightShowRaspberry
         }
 
 
-        private void btnUpload_Click(object sender, EventArgs e)
+        private async void btnUpload_Click(object sender, EventArgs e)
         {
             if (connection.IsConnected)
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     string[] files = openFileDialog1.FileNames;
-                    connection.Upload(files);
-
+                    //connection.Upload(files);
+                    await connection.UploadAsync(files);
                     foreach (var file in files)
                     {
                         string fileName = Path.GetFileName(file);
