@@ -26,7 +26,12 @@ namespace LightShowRaspberry
             sshClient = new SshClient(host, username, password);
         }
 
-        public bool Connect()
+        public async Task ConnectAsync()
+        {
+            await Task.Run(() => Connect());
+        }
+
+        public void Connect()
         {
             try
             {
@@ -35,11 +40,10 @@ namespace LightShowRaspberry
 
                 ftpClient.ChangeDirectory(MusicFolder);
                 IsConnected = true;
-                return true;
             }
             catch
             {
-                return false;
+
             }
         }
 
@@ -56,6 +60,10 @@ namespace LightShowRaspberry
             return Convert.ToInt32(result);
         }
 
+        public async Task UploadAsync(string[] files)
+        {
+            await Task.Run(() => Upload(files));
+        }
         public void Upload(string[] files)
         {
             foreach (var file in files)
@@ -103,6 +111,7 @@ namespace LightShowRaspberry
                 shellStream.WriteLine("\x03");
                 Thread.Sleep(200); //Pauza aby se stihlo poslat ctrl+c
                 shellStream.Close();
+                shellStream.Dispose();
             }
             catch { }
         }
