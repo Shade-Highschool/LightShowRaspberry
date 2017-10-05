@@ -38,7 +38,7 @@ namespace LightShowRaspberry
                 listBox1.Items.Add(song);
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void btnConnect_Click(object sender, EventArgs e)
         {
             connection.Connect(); //předělat na async
             if (connection.IsConnected)
@@ -51,7 +51,7 @@ namespace LightShowRaspberry
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnUpload_Click(object sender, EventArgs e)
         {
             if (connection.IsConnected)
             {
@@ -128,6 +128,16 @@ namespace LightShowRaspberry
         {
             if (connection.IsConnected)
                 connection.Stop();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitlePT02_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
