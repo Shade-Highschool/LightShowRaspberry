@@ -38,33 +38,38 @@ namespace LightShowRaspberry
                 listBox1.Items.Add(song);
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
-            connection.Connect(); //předělat na async
+            label1.Text = "Conecting...";
+            //connection.Connect();
+            await connection.ConnectAsync();
             if (connection.IsConnected)
             {
                 UpdateList();
                 trackBar1.Value = connection.GetVolume();
+                label1.Text = "Connected";
             }
             else
                 MessageBox.Show("Connection could not be estabilished");
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void button3_Click(object sender, EventArgs e)
         {
             if (connection.IsConnected)
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
+                    label1.Text = "Uploading...";
                     string[] files = openFileDialog1.FileNames;
-                    connection.Upload(files);
+                    await connection.UploadAsync(files);
 
                     foreach (var file in files)
                     {
                         string fileName = Path.GetFileName(file);
                         if(!listBox1.Items.Contains(fileName))
                             listBox1.Items.Add(fileName);
+                        label1.Text = "Uploaded";
                     }
                 }
                 else
@@ -103,9 +108,13 @@ namespace LightShowRaspberry
                 if (connection.IsConnected)
                 {
                     connection.Play(listBox1.SelectedItem.ToString(), trackBar1.Value);
-                 }
+                    button2.Enabled = false;
+                }
                 else
+                {
                     MessageBox.Show("Connection could not be estabilished");
+                    label1.Text = "Disconnected";
+                }
             }
             else
                 MessageBox.Show("Song is not selected");
@@ -127,7 +136,10 @@ namespace LightShowRaspberry
         private void button6_Click(object sender, EventArgs e)
         {
             if (connection.IsConnected)
+            {
                 connection.Stop();
+                button2.Enabled = true;
+            }
         }
     }
 }
