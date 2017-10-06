@@ -45,6 +45,8 @@
             this.lblTitlePT03 = new System.Windows.Forms.Label();
             this.lblText02 = new System.Windows.Forms.Label();
             this.lblText03 = new System.Windows.Forms.Label();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnMinimize = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
@@ -76,11 +78,11 @@
             this.listBox1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 19;
-            this.listBox1.Location = new System.Drawing.Point(313, 198);
+            this.listBox1.Location = new System.Drawing.Point(313, 210);
             this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(461, 289);
+            this.listBox1.Size = new System.Drawing.Size(461, 270);
             this.listBox1.TabIndex = 2;
             // 
             // button2
@@ -132,12 +134,12 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(806, 198);
+            this.trackBar1.Location = new System.Drawing.Point(806, 210);
             this.trackBar1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(56, 289);
+            this.trackBar1.Size = new System.Drawing.Size(56, 270);
             this.trackBar1.TabIndex = 6;
             // 
             // button5
@@ -201,7 +203,7 @@
             this.lblTitlePT01.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblTitlePT01.Location = new System.Drawing.Point(123, 41);
             this.lblTitlePT01.Name = "lblTitlePT01";
-            this.lblTitlePT01.Size = new System.Drawing.Size(172, 39);
+            this.lblTitlePT01.Size = new System.Drawing.Size(167, 38);
             this.lblTitlePT01.TabIndex = 11;
             this.lblTitlePT01.Text = "LightShow";
             // 
@@ -231,7 +233,7 @@
             // 
             this.lblText02.AutoSize = true;
             this.lblText02.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.lblText02.Location = new System.Drawing.Point(309, 171);
+            this.lblText02.Location = new System.Drawing.Point(309, 187);
             this.lblText02.Name = "lblText02";
             this.lblText02.Size = new System.Drawing.Size(71, 19);
             this.lblText02.TabIndex = 14;
@@ -241,11 +243,39 @@
             // 
             this.lblText03.AutoSize = true;
             this.lblText03.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.lblText03.Location = new System.Drawing.Point(791, 171);
+            this.lblText03.Location = new System.Drawing.Point(800, 187);
             this.lblText03.Name = "lblText03";
             this.lblText03.Size = new System.Drawing.Size(62, 19);
             this.lblText03.TabIndex = 15;
             this.lblText03.Text = "Volume";
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Arial", 18F);
+            this.btnClose.Location = new System.Drawing.Point(837, 13);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(43, 41);
+            this.btnClose.TabIndex = 16;
+            this.btnClose.Text = "×";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // btnMinimize
+            // 
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Font = new System.Drawing.Font("Arial", 18F);
+            this.btnMinimize.Location = new System.Drawing.Point(790, 13);
+            this.btnMinimize.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnMinimize.Name = "btnMinimize";
+            this.btnMinimize.Size = new System.Drawing.Size(43, 41);
+            this.btnMinimize.TabIndex = 17;
+            this.btnMinimize.Text = "_";
+            this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // MainForm
             // 
@@ -253,6 +283,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(892, 512);
+            this.Controls.Add(this.btnMinimize);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblText03);
             this.Controls.Add(this.lblText02);
             this.Controls.Add(this.lblTitlePT03);
@@ -302,6 +334,8 @@
         private System.Windows.Forms.Label lblTitlePT03;
         private System.Windows.Forms.Label lblText02;
         private System.Windows.Forms.Label lblText03;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnMinimize;
     }
 }
 
