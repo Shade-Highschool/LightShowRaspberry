@@ -32,10 +32,13 @@ namespace LightShowRaspberry
         private void UpdateList()
         {
             listBox1.Items.Clear();
-            var songList = connection.GetSongList();
-            foreach (var song in songList)
+            if (connection.IsConnected)
             {
-                listBox1.Items.Add(song);
+                var songList = connection.GetSongList();
+                foreach (var song in songList)
+                {
+                    listBox1.Items.Add(song);
+                }
             }
         }
         private async void btnConnect_Click(object sender, EventArgs e)
@@ -82,13 +85,16 @@ namespace LightShowRaspberry
         {
             if(connection.IsConnected)
             {
-                var items = listBox1.SelectedItems;
-                string[] files = items.OfType<string>().ToArray();
-                connection.Delete(files);
-
-                for (int i = 0; i < items.Count; i++) //Musím for cyklus.  Foreach je v listbox kolekci zakázanej
+                if (listBox1.SelectedIndex >= 0)
                 {
-                    listBox1.Items.Remove(items[i]);
+                    var items = listBox1.SelectedItems;
+                    string[] files = items.OfType<string>().ToArray();
+                    connection.Delete(files);
+
+                    for (int i = 0; i < items.Count; i++) //Musím for cyklus.  Foreach je v listboxSelectedItem kolekci zakázanej
+                    {
+                        listBox1.Items.Remove(items[i]);
+                    }
                 }
 
             }
@@ -108,8 +114,6 @@ namespace LightShowRaspberry
                 else
                     MessageBox.Show("Connection could not be estabilished");
             }
-            else
-                MessageBox.Show("Song is not selected");
 
         }
 
