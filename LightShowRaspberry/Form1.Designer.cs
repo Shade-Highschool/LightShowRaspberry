@@ -31,13 +31,13 @@
             this.btnConnect = new System.Windows.Forms.Button();
             this.lblConnected = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPlay = new System.Windows.Forms.Button();
             this.btnUpload = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnRemoveSong = new System.Windows.Forms.Button();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnCloseConn = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             this.lblText01 = new System.Windows.Forms.Label();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lblTitlePT01 = new System.Windows.Forms.Label();
@@ -85,22 +85,22 @@
             this.listBox1.Size = new System.Drawing.Size(461, 270);
             this.listBox1.TabIndex = 2;
             // 
-            // button2
+            // btnPlay
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(177, 211);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 41);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Play song";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnPlay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnPlay.FlatAppearance.BorderSize = 0;
+            this.btnPlay.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnPlay.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnPlay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPlay.ForeColor = System.Drawing.Color.White;
+            this.btnPlay.Location = new System.Drawing.Point(177, 211);
+            this.btnPlay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(118, 41);
+            this.btnPlay.TabIndex = 3;
+            this.btnPlay.Text = "Play song";
+            this.btnPlay.UseVisualStyleBackColor = false;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // btnUpload
             // 
@@ -120,17 +120,17 @@
             this.openFileDialog1.Filter = "MP3 |*.mp3";
             this.openFileDialog1.Multiselect = true;
             // 
-            // button4
+            // btnRemoveSong
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(17, 339);
-            this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(140, 42);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Remove song";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnRemoveSong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveSong.Location = new System.Drawing.Point(17, 339);
+            this.btnRemoveSong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRemoveSong.Name = "btnRemoveSong";
+            this.btnRemoveSong.Size = new System.Drawing.Size(140, 42);
+            this.btnRemoveSong.TabIndex = 5;
+            this.btnRemoveSong.Text = "Remove song";
+            this.btnRemoveSong.UseVisualStyleBackColor = true;
+            this.btnRemoveSong.Click += new System.EventHandler(this.btnRemoveSong_Click);
             // 
             // trackBar1
             // 
@@ -142,39 +142,39 @@
             this.trackBar1.Size = new System.Drawing.Size(56, 270);
             this.trackBar1.TabIndex = 6;
             // 
-            // button5
+            // btnCloseConn
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(177, 340);
-            this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(118, 41);
-            this.button5.TabIndex = 7;
-            this.button5.Text = "Close connection";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnCloseConn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnCloseConn.FlatAppearance.BorderSize = 0;
+            this.btnCloseConn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnCloseConn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnCloseConn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseConn.ForeColor = System.Drawing.Color.White;
+            this.btnCloseConn.Location = new System.Drawing.Point(177, 340);
+            this.btnCloseConn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCloseConn.Name = "btnCloseConn";
+            this.btnCloseConn.Size = new System.Drawing.Size(118, 41);
+            this.btnCloseConn.TabIndex = 7;
+            this.btnCloseConn.Text = "Close connection";
+            this.btnCloseConn.UseVisualStyleBackColor = false;
+            this.btnCloseConn.Click += new System.EventHandler(this.btnCloseConn_Click);
             // 
-            // button6
+            // btnStop
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(177, 276);
-            this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(118, 41);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Stop";
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnStop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnStop.FlatAppearance.BorderSize = 0;
+            this.btnStop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnStop.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.btnStop.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStop.ForeColor = System.Drawing.Color.White;
+            this.btnStop.Location = new System.Drawing.Point(177, 276);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(118, 41);
+            this.btnStop.TabIndex = 8;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = false;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // lblText01
             // 
@@ -292,12 +292,12 @@
             this.Controls.Add(this.lblTitlePT01);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.lblText01);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnCloseConn);
             this.Controls.Add(this.trackBar1);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnRemoveSong);
             this.Controls.Add(this.btnUpload);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lblConnected);
             this.Controls.Add(this.btnConnect);
@@ -320,13 +320,13 @@
         private System.Windows.Forms.Button btnConnect;
         private System.Windows.Forms.Label lblConnected;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnUpload;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnRemoveSong;
         private System.Windows.Forms.TrackBar trackBar1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnCloseConn;
+        private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Label lblText01;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Label lblTitlePT01;

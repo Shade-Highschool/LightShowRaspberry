@@ -83,7 +83,7 @@ namespace LightShowRaspberry
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnRemoveSong_Click(object sender, EventArgs e)
         {
             if(connection.IsConnected)
             {
@@ -105,7 +105,7 @@ namespace LightShowRaspberry
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnPlay_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex >= 0)
             {
@@ -119,7 +119,7 @@ namespace LightShowRaspberry
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnCloseConn_Click(object sender, EventArgs e)
         {
             if(connection.IsConnected)
             {
@@ -131,7 +131,7 @@ namespace LightShowRaspberry
 
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnStop_Click(object sender, EventArgs e)
         {
             if (connection.IsConnected)
                 connection.Stop();
