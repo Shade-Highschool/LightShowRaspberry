@@ -69,20 +69,20 @@
             this.lblConnected.Font = new System.Drawing.Font("Arial", 10.2F);
             this.lblConnected.Location = new System.Drawing.Point(72, 171);
             this.lblConnected.Name = "lblConnected";
-            this.lblConnected.Size = new System.Drawing.Size(74, 19);
+            this.lblConnected.Size = new System.Drawing.Size(94, 16);
             this.lblConnected.TabIndex = 1;
-            this.lblConnected.Text = "waiting...";
+            this.lblConnected.Text = "Disconnected";
             // 
             // listBox1
             // 
             this.listBox1.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 19;
+            this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(313, 210);
             this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listBox1.Name = "listBox1";
             this.listBox1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBox1.Size = new System.Drawing.Size(461, 270);
+            this.listBox1.Size = new System.Drawing.Size(461, 260);
             this.listBox1.TabIndex = 2;
             // 
             // btnPlay
@@ -139,7 +139,7 @@
             this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
-            this.trackBar1.Size = new System.Drawing.Size(56, 270);
+            this.trackBar1.Size = new System.Drawing.Size(45, 270);
             this.trackBar1.TabIndex = 6;
             // 
             // btnCloseConn
@@ -183,7 +183,7 @@
             this.lblText01.Location = new System.Drawing.Point(13, 171);
             this.lblText01.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblText01.Name = "lblText01";
-            this.lblText01.Size = new System.Drawing.Size(59, 19);
+            this.lblText01.Size = new System.Drawing.Size(52, 16);
             this.lblText01.TabIndex = 9;
             this.lblText01.Text = "Status:";
             // 
@@ -203,7 +203,7 @@
             this.lblTitlePT01.Font = new System.Drawing.Font("Arial", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.lblTitlePT01.Location = new System.Drawing.Point(123, 41);
             this.lblTitlePT01.Name = "lblTitlePT01";
-            this.lblTitlePT01.Size = new System.Drawing.Size(167, 38);
+            this.lblTitlePT01.Size = new System.Drawing.Size(141, 32);
             this.lblTitlePT01.TabIndex = 11;
             this.lblTitlePT01.Text = "LightShow";
             // 
@@ -213,10 +213,9 @@
             this.lblTitlePT02.Font = new System.Drawing.Font("Arial", 12F);
             this.lblTitlePT02.Location = new System.Drawing.Point(206, 80);
             this.lblTitlePT02.Name = "lblTitlePT02";
-            this.lblTitlePT02.Size = new System.Drawing.Size(34, 23);
+            this.lblTitlePT02.Size = new System.Drawing.Size(26, 18);
             this.lblTitlePT02.TabIndex = 12;
             this.lblTitlePT02.Text = "for";
-            this.lblTitlePT02.Click += new System.EventHandler(this.lblTitlePT02_Click);
             // 
             // lblTitlePT03
             // 
@@ -225,7 +224,7 @@
             this.lblTitlePT03.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(188)))), ((int)(((byte)(17)))), ((int)(((byte)(66)))));
             this.lblTitlePT03.Location = new System.Drawing.Point(236, 80);
             this.lblTitlePT03.Name = "lblTitlePT03";
-            this.lblTitlePT03.Size = new System.Drawing.Size(125, 23);
+            this.lblTitlePT03.Size = new System.Drawing.Size(99, 18);
             this.lblTitlePT03.TabIndex = 13;
             this.lblTitlePT03.Text = "Raspberry Pi";
             // 
@@ -235,7 +234,7 @@
             this.lblText02.Font = new System.Drawing.Font("Arial", 10.2F);
             this.lblText02.Location = new System.Drawing.Point(309, 187);
             this.lblText02.Name = "lblText02";
-            this.lblText02.Size = new System.Drawing.Size(71, 19);
+            this.lblText02.Size = new System.Drawing.Size(62, 16);
             this.lblText02.TabIndex = 14;
             this.lblText02.Text = "Song list";
             // 
@@ -245,7 +244,7 @@
             this.lblText03.Font = new System.Drawing.Font("Arial", 10.2F);
             this.lblText03.Location = new System.Drawing.Point(800, 187);
             this.lblText03.Name = "lblText03";
-            this.lblText03.Size = new System.Drawing.Size(62, 19);
+            this.lblText03.Size = new System.Drawing.Size(54, 16);
             this.lblText03.TabIndex = 15;
             this.lblText03.Text = "Volume";
             // 
@@ -279,7 +278,7 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(892, 512);
@@ -307,7 +306,6 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LightShow Raspberry Pi";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);

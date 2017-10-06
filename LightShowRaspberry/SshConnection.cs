@@ -119,6 +119,7 @@ namespace LightShowRaspberry
         {
             if (IsConnected)
             {
+
                 ftpClient.Disconnect();
 
                 sshClient.Disconnect();

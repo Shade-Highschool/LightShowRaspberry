@@ -43,16 +43,17 @@ namespace LightShowRaspberry
         }
         private async void btnConnect_Click(object sender, EventArgs e)
         {
+            lblConnected.Text = "Connecting..";
             await connection.ConnectAsync();
             // connection.Connect();
             if (connection.IsConnected)
             {
-                lblConnected.Text = "connected";
+                lblConnected.Text = "Connected";
                 UpdateList();
                 trackBar1.Value = connection.GetVolume();
             }
             else
-                lblConnected.Text = "not connected";
+                lblConnected.Text = "Disconnected";
                 MessageBox.Show("Connection could not be estabilished");
         }
 
@@ -65,6 +66,7 @@ namespace LightShowRaspberry
                 {
                     string[] files = openFileDialog1.FileNames;
                     //connection.Upload(files);
+                    lblConnected.Text = "Uploading..";
                     await connection.UploadAsync(files);
                     foreach (var file in files)
                     {
@@ -72,6 +74,7 @@ namespace LightShowRaspberry
                         if(!listBox1.Items.Contains(fileName))
                             listBox1.Items.Add(fileName);
                     }
+                    lblConnected.Text = "Files uploaded";
                 }
                 else
                     return;
@@ -89,6 +92,7 @@ namespace LightShowRaspberry
             {
                 if (listBox1.SelectedIndex >= 0)
                 {
+                    lblConnected.Text = "Removing files..";
                     var items = listBox1.SelectedItems;
                     string[] files = items.OfType<string>().ToArray();
                     connection.Delete(files);
@@ -97,6 +101,7 @@ namespace LightShowRaspberry
                     {
                         listBox1.Items.Remove(items[i]);
                     }
+                    lblConnected.Text = "Files removed";
                 }
 
             }
@@ -125,6 +130,8 @@ namespace LightShowRaspberry
             {
                 connection.Exit();
                 listBox1.Items.Clear();
+                lblConnected.Text = "Disconnected";
+
             }
             else
                 MessageBox.Show("Connection could not be estabilished");
@@ -137,18 +144,10 @@ namespace LightShowRaspberry
                 connection.Stop();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTitlePT02_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
+            if (connection.IsConnected)
+                connection.Exit();
             Application.Exit();
         }
 
