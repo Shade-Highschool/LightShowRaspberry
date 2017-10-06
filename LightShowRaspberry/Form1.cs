@@ -41,13 +41,15 @@ namespace LightShowRaspberry
         private async void btnConnect_Click(object sender, EventArgs e)
         {
             await connection.ConnectAsync();
-           // connection.Connect();
+            // connection.Connect();
             if (connection.IsConnected)
             {
+                lblConnected.Text = "connected";
                 UpdateList();
                 trackBar1.Value = connection.GetVolume();
             }
             else
+                lblConnected.Text = "not connected";
                 MessageBox.Show("Connection could not be estabilished");
         }
 

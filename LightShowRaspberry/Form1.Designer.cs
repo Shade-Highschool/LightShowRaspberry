@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.btnConnect = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblConnected = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
             this.btnUpload = new System.Windows.Forms.Button();
@@ -63,15 +63,15 @@
             this.btnConnect.UseVisualStyleBackColor = true;
             this.btnConnect.Click += new System.EventHandler(this.btnConnect_Click);
             // 
-            // label1
+            // lblConnected
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 10.2F);
-            this.label1.Location = new System.Drawing.Point(72, 171);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 19);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "connected";
+            this.lblConnected.AutoSize = true;
+            this.lblConnected.Font = new System.Drawing.Font("Arial", 10.2F);
+            this.lblConnected.Location = new System.Drawing.Point(72, 171);
+            this.lblConnected.Name = "lblConnected";
+            this.lblConnected.Size = new System.Drawing.Size(74, 19);
+            this.lblConnected.TabIndex = 1;
+            this.lblConnected.Text = "waiting...";
             // 
             // listBox1
             // 
@@ -299,7 +299,7 @@
             this.Controls.Add(this.btnUpload);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblConnected);
             this.Controls.Add(this.btnConnect);
             this.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -318,7 +318,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblConnected;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnUpload;
