@@ -22,7 +22,7 @@ namespace LightShowRaspberry
            // connection.MusicFolder = "/home/pi/Music/";
         }
 
-        string RaspberryIp = "192.168.0.104";
+        string RaspberryIp = "192.168.0.102";
 
         string loginName = "pi";
         string loginPassword = "raspberry";
@@ -53,8 +53,10 @@ namespace LightShowRaspberry
                 trackBar1.Value = connection.GetVolume();
             }
             else
+            {
                 lblConnected.Text = "Disconnected";
                 MessageBox.Show("Connection could not be estabilished");
+            }
         }
 
 
@@ -117,6 +119,7 @@ namespace LightShowRaspberry
                 if (connection.IsConnected)
                 {
                     connection.Play(listBox1.SelectedItem.ToString(), trackBar1.Value);
+                    btnPlay.Enabled = false;
                  }
                 else
                     MessageBox.Show("Connection could not be estabilished");
@@ -131,6 +134,7 @@ namespace LightShowRaspberry
                 connection.Exit();
                 listBox1.Items.Clear();
                 lblConnected.Text = "Disconnected";
+                btnPlay.Enabled = true;
 
             }
             else
@@ -142,6 +146,7 @@ namespace LightShowRaspberry
         {
             if (connection.IsConnected)
                 connection.Stop();
+            btnPlay.Enabled = true;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
